@@ -4,17 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 
 public class PairList {
-    public static void findPair13(List<Integer> list){
+    public static void findPair13(List<Integer> numbers){
+        if (numbers != null) {
         HashMap<Integer, Integer> pairList = new HashMap<Integer,Integer>();
-        for (int i = 0; i < list.size(); i++) {
-            for (int j = 0; j < list.size() ; j++) {
-                if ((list.get(i) + list.get(j) == 13) && (list.get(i)<list.get(j))){
-                    pairList.put( list.get(i),list.get(j) );
+        for (int i = 0; i < numbers.size(); i++) {
+            for (int j = 0; j < numbers.size() ; j++) {
+                if ((numbers.get(i) + numbers.get(j) == 13) && (numbers.get(i)<numbers.get(j))){
+                    pairList.put( numbers.get(i),numbers.get(j) );
                 }
             }
         }
         pairList.forEach((num1, num2) ->{
             System.out.println(num1+" "+num2);
-        });
+            });
+        }
     }
 }
