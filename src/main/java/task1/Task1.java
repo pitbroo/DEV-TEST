@@ -1,27 +1,23 @@
 package task1;
 
 
-import ReaderAndParser.InputReader;
-import ReaderAndParser.IntegerParser;
+import utils.InputReader;
+import utils.IntegerParser;
 
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+
+import static utils.AplicationState.shouldContinue;
 
 public class Task1 {
-    public static boolean shouldContinue = true;
-    private static final Logger logger = Logger.getLogger("Task1");
 
     public static void main(String[] args) {
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers;
         while (shouldContinue) {
-            try{
+            System.out.println("enter values");
             String input = InputReader.input();
             numbers = IntegerParser.parse(input);
             InfoPrinter.print(numbers);
-            }catch (NumberFormatException exception){
-                logger.log(Level.SEVERE, "ERROR: Wrong input! Entered character is not a number");
-            }
         }
+
     }
 }

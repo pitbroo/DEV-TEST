@@ -1,43 +1,49 @@
 package task3;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import utils.AplicationState;
+
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class InputPoints {
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final Logger logger = Logger.getLogger("Task3");
+    private static final Logger logger = Logger.getLogger("InputPoints");
 
-    static int getPointNumber(){
-        System.out.println("Enter values: ");
-        try{
-            int n = scanner.nextInt();
-            return n;
-        }catch (InputMismatchException exception){
+    static Integer getPointNumber() {
+
+        try {
+            Scanner scanner = new Scanner(System.in);
+            Integer number =scanner.nextInt();
+            return number;
+        } catch (InputMismatchException exception) {
             logger.log(Level.SEVERE, "ERROR: Wrong input! Entered character is not a number");
         }
-        return 0;
+        return null;
+
     }
 
-    static List<Point> input(int n) {
-        if (n != -1) {
-            try {
-                List<Point> points = new ArrayList<>();
+    static List<Point> inputPoints(Integer n) {
+        List<Point> points = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        try {
+            if (n != null) {
                 for (int i = 0; i < n; i++) {
-                    int a = scanner.nextInt();
-                    int b = scanner.nextInt();
+                    Integer a = scanner.nextInt();
+                    Integer b = scanner.nextInt();;
+                    if (a == null || b ==null) {
+                        throw new IllegalArgumentException("User input is not a number!");
+                    }
                     Point point = new Point(a, b);
                     points.add(point);
                 }
-                return points;
-            } catch (InputMismatchException exception) {
-                logger.log(Level.SEVERE, "ERROR: Wrong input! Entered character is not a number");
+                AplicationState.shouldContinue = false;
+                System.out.println(points);
             }
+        } catch (IllegalArgumentException e) {
+            points = Collections.emptyList();
         }
-        return null;
+
+        return points;
     }
 }
