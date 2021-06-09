@@ -11,12 +11,12 @@ public class ListDistinct {
     }
 
     public static void printDistinct(List<Integer> list) {
-        List<Integer> NewUniqueList = new ArrayList<>();
+        List<Integer> newUniqueList = new ArrayList<>();
         list.forEach(item -> {
-            if (!NewUniqueList.contains(item)) {
-                NewUniqueList.add(item);
+            if (!newUniqueList.contains(item)) {
+                newUniqueList.add(item);
             }
         });
-        System.out.println("Unique values: " + NewUniqueList.size());
+        System.out.println("Unique values: " + newUniqueList.size());
     }
 }

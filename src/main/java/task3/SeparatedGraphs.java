@@ -17,7 +17,7 @@ public class SeparatedGraphs {
                     .collect(Collectors.toList());
             int separatedGraphs = 1;
             for (int i = 0; i < sortedPointList.size() - 1; i++) {
-                if (pointList.get(i) == sortedPointList.get(i++)) {
+                if (pointList.get(i).B == sortedPointList.get(i+1).A) {
                     separatedGraphs++;
                 }
             }
